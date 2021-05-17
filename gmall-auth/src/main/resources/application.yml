@@ -1,0 +1,35 @@
+server:
+  port: 18089
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+        port: 8719
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    discovery-client-enabled: true
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+  thymeleaf:
+    cache: false
+
+feign:
+  sentinel:
+    enabled: true
+
+auth:
+  jwt:
+    pubKeyPath: D:\内网通文件\锋哥\project-0713\rsa\rsa.pub
+    priKeyPath: D:\内网通文件\锋哥\project-0713\rsa\rsa.pri
+    secret: dfhsuaifhdsi12323ASFHSD
+    expire: 180
+    cookieName: GMALL-TOKEN
+    unick: unick
+

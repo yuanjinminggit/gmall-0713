@@ -1,0 +1,48 @@
+server:
+  port: 18083
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+        port: 8719
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    discovery-client-enabled: true
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.76.129/guli_wms
+    username: root
+    password: root
+  redis:
+    host: 192.168.76.129
+  rabbitmq:
+    host: 192.168.76.129
+    virtual-host: /fengge
+    username: fengge
+    password: fengge
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 3
+        acknowledge-mode: manual
+    publisher-confirm-type: correlated
+    publisher-returns: true
+feign:
+  sentinel:
+    enabled: true
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  mapper-locations: classpath:mapper/wms/**/*.xml
+  type-aliases-package: com.atguigu.gmall.wms.entity
+

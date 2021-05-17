@@ -1,0 +1,49 @@
+server:
+  port: 18092
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+        port: 8719
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    discovery-client-enabled: true
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+  thymeleaf:
+    cache: false
+
+  task:
+    execution:
+      thread-name-prefix: cart-async-
+      pool:
+        core-size: 100
+        max-size: 500
+        queue-capacity: 1000
+        keep-alive: 60s
+        allow-core-thread-timeout: false
+      shutdown:
+        await-termination: true
+        await-termination-period: 60
+  redis:
+    host: 192.168.76.129
+  rabbitmq:
+    host: 192.168.76.129
+    virtual-host: /fengge
+    username: fengge
+    password: fengge
+    publisher-confirm-type: correlated
+    publisher-returns: true
+
+feign:
+  sentinel:
+    enabled: true
+
+
